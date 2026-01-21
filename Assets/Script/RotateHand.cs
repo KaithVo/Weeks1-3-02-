@@ -1,13 +1,12 @@
 using UnityEngine;
-using static UnityEngine.RuleTile.TilingRuleOutput;
 
-public class RotateME : MonoBehaviour
+public class RotateHand : MonoBehaviour
 {
     public float speed = 1;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    { 
-    // Update is called once per frame
+    {
+        // Update is called once per frame
     }
     void Update()
     {
@@ -16,3 +15,4 @@ public class RotateME : MonoBehaviour
         transform.eulerAngles = newRotation;
     }
 }
+
