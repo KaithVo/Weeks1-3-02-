@@ -4,18 +4,21 @@ using UnityEngine.InputSystem;
 public class SpriteChanger : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
-    public Color col = Color.red;
+    public Color col;
+    public Sprite[] barrels;
+    public int randomNumder; 
 
     void Start()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        //PickRandomColor();
+        PickRandomSprite();
     }
         void Update()
     {
-        //if (Keyboard.current.anyKey.wasPressedThisFrame == true)
-        //{
-        //  //PickARandomColour();
-        //}
+        if (Keyboard.current.anyKey.wasPressedThisFrame == true)
+        {
+            PickRandomSprite();
+        }
         //Get the mouse position
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         //is it allign?
@@ -35,5 +38,12 @@ public class SpriteChanger : MonoBehaviour
     void PickRandomColour()
     {
         spriteRenderer.color = Random.ColorHSV(); 
+    }
+    void PickRandomSprite()
+    {
+        //get a random numder between 0 to 2
+        randomNumder = Random.Range(0, barrels.Length);
+        //use that to set the sprite
+        spriteRenderer.sprite = barrels[randomNumder];
     }
 }
