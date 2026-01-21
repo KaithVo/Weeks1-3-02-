@@ -1,17 +1,18 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
-using o
+using System.Collections.Generic;
 
 public class SpriteChanger : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
     public Color col;
-    public AudioListener ;
+    public List<Sprite> barrels;
     public int randomNumder; 
 
     void Start()
     {
         //PickRandomColor();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         PickRandomSprite();
     }
         void Update()
