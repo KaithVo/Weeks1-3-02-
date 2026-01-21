@@ -1,12 +1,14 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class SpriteChanger : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
-    
-        void Start()
+    public Color col = Color.red;
+
+    void Start()
     {
-        //spriteRenderer.color = Color.red;
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
         void Update()
     {
@@ -14,8 +16,20 @@ public class SpriteChanger : MonoBehaviour
         //{
         //  //PickARandomColour();
         //}
-
+        //Get the mouse position
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        //is it allign?
+        if (spriteRenderer.bounds.Contains(mousePos)== true)
+        {
+            //use the color variable
+            spriteRenderer.color = col;
+
+        }
+        else
+        {
+            //set the color to white
+            spriteRenderer.color = Color.white; 
+        }
     }
 
     void PickRandomColour()
