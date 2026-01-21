@@ -1,11 +1,12 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using o
 
 public class SpriteChanger : MonoBehaviour
 {
     public SpriteRenderer spriteRenderer;
     public Color col;
-    public Sprite[] barrels;
+    public AudioListener ;
     public int randomNumder; 
 
     void Start()
@@ -17,7 +18,11 @@ public class SpriteChanger : MonoBehaviour
     {
         if (Keyboard.current.anyKey.wasPressedThisFrame == true)
         {
-            PickRandomSprite();
+            Debug.Log("Try to change the Sprite");
+            if (barrels.Count > 0)
+            {
+                PickRandomSprite();
+            }
         }
         //Get the mouse position
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
@@ -33,6 +38,10 @@ public class SpriteChanger : MonoBehaviour
             //set the color to white
             spriteRenderer.color = Color.white; 
         }
+        if (Mouse.current.leftButton.wasPressedThisFrame == true && barrels.Count > 0)
+        {
+            barrels.RemoveAt(0);
+        }
     }
 
     void PickRandomColour()
@@ -42,7 +51,7 @@ public class SpriteChanger : MonoBehaviour
     void PickRandomSprite()
     {
         //get a random numder between 0 to 2
-        //randomNumder = Random.Range(0, barrels.Length);
+        randomNumder = Random.Range(0, barrels.Count);
         //use that to set the sprite
         spriteRenderer.sprite = barrels[randomNumder];
     }
