@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class RotateHand : MonoBehaviour
 {
-    public float speed = 1;
+    public float speed = 50;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -11,7 +11,7 @@ public class RotateHand : MonoBehaviour
     void Update()
     {
         Vector3 newRotation = transform.eulerAngles;
-        newRotation.z += speed * Time.deltaTime;
+        newRotation.z -= speed * Time.deltaTime;
         transform.eulerAngles = newRotation;
     }
 }
