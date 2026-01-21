@@ -42,7 +42,7 @@ public class SpriteChanger : MonoBehaviour
     void PickRandomSprite()
     {
         //get a random numder between 0 to 2
-        randomNumder = Random.Range(0, barrels.Length);
+        //randomNumder = Random.Range(0, barrels.Length);
         //use that to set the sprite
         spriteRenderer.sprite = barrels[randomNumder];
     }
