@@ -18,20 +18,20 @@ public class SpecialLetter : MonoBehaviour
     private float animationSpeed = 3f;
     public AnimationCurve curve;
 
-    //time
-    public float t = 0;
+  
 
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         Pickrandomcolor();
+        originalScale = transform.localScale;
     }
 
     // Update is called once per frame
     void Update()
     {
         Detection();
-
+        Animating();
         //change color
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         if (spriteRenderer.bounds.Contains(mousePos) == true)
@@ -71,18 +71,22 @@ public class SpecialLetter : MonoBehaviour
 
         }
     }
-
+    private float speed = 2f;
+    //time
+    private float t = 0;
     //animation curve for size
     void Animating() //https://zh.esotericsoftware.com/forum/d/3825-unity-random-bone-explosion/2
     {
         //if mouse is over than the animation happens
         if (mouseIsOverMe)
         {
-            t += Time.deltaTime;
+            //increase t 
+            t += Time.deltaTime * speed;
         }
         else
         {
-            t -= Time.deltaTime;
+            //decrease t
+            t -= Time.deltaTime * speed;
 
         }
         if (t > 1)
