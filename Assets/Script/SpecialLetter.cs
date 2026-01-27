@@ -8,7 +8,17 @@ public class SpecialLetter : MonoBehaviour
     public Color col;
     public SpriteRenderer spriteRenderer; //for sprite chnge
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    //scales value
+    public Vector2 originalScale;
+    public Vector2 IsExpanding = new Vector2(1.5f, 1.5f);
+
+    //animation control using animation curve
+    private float animationSpeed = 3f;
+    public AnimationCurve animationCurve;
+
+    //time
+    public float t = 0;
+
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -16,6 +26,27 @@ public class SpecialLetter : MonoBehaviour
 
     // Update is called once per frame
     void Update()
+    {
+        Detection();
+
+        if (spriteRenderer.bounds.Contains(mousePos) == true)
+        {
+            //use the color variable
+            spriteRenderer.color = col;
+
+        }
+        else
+        {
+            //set the color to white
+            spriteRenderer.color = Color.white;
+        }
+
+    }
+    void Pickrandomcolor()
+    {
+        spriteRenderer.color = Random.ColorHSV();
+    }
+    void Detection()
     {
         //get the mouse position (in pixels) and convert it to world space (in meters)
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
@@ -34,21 +65,5 @@ public class SpecialLetter : MonoBehaviour
             mouseIsOverMe = false;
 
         }
-        if (spriteRenderer.bounds.Contains(mousePos) == true)
-        {
-            //use the color variable
-            spriteRenderer.color = col;
-
-        }
-        else
-        {
-            //set the color to white
-            spriteRenderer.color = Color.white;
-        }
-
-    }
-    void Pickrandomcolor()
-    {
-        spriteRenderer.color = Random.ColorHSV();
     }
 }
