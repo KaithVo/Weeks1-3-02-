@@ -6,17 +6,16 @@ using UnityEngine.InputSystem;
 
 public class SpecialLetter : MonoBehaviour
 {
-    public bool mouseIsOverMe = false;
+    private bool mouseIsOverMe = false;
     public Color col;
     public SpriteRenderer spriteRenderer; //for sprite chnge
 
     //scales value
-    public Vector2 originalScale;
-    public Vector2 IsExpanding = new Vector2(1.5f, 1.5f);
+    public Vector3 originalScale;
+    public Vector3 IsExpanding = new Vector3(1.5f, 1.5f,1.5f);
 
     //animation control using animation curve
     private float animationSpeed = 3f;
-    public AnimationCurve curve;
 
   
 
@@ -24,6 +23,8 @@ public class SpecialLetter : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
         Pickrandomcolor();
+
+        //save the original scale
         originalScale = transform.localScale;
     }
 
@@ -32,6 +33,7 @@ public class SpecialLetter : MonoBehaviour
     {
         Detection();
         Animating();
+
         //change color
         Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         if (spriteRenderer.bounds.Contains(mousePos) == true)
@@ -49,7 +51,7 @@ public class SpecialLetter : MonoBehaviour
     }
     void Pickrandomcolor()
     {
-        spriteRenderer.color = Random.ColorHSV();
+        col = Random.ColorHSV();
     }
     void Detection()
     {
@@ -71,9 +73,12 @@ public class SpecialLetter : MonoBehaviour
 
         }
     }
+
     private float speed = 2f;
     //time
     private float t = 0;
+    public AnimationCurve curve;
+
     //animation curve for size
     void Animating() //https://zh.esotericsoftware.com/forum/d/3825-unity-random-bone-explosion/2
     {
@@ -89,10 +94,6 @@ public class SpecialLetter : MonoBehaviour
             t -= Time.deltaTime * speed;
 
         }
-        if (t > 1)
-        {
-            t = 0;
-        }
-        transform.localScale = Vector2.Lerp(originalScale, IsExpanding, curve.Evaluate(t));
+        transform.localScale = Vector3.Lerp(originalScale, IsExpanding, curve.Evaluate(t));
     }
 }
