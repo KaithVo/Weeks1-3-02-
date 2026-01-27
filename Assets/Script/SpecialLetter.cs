@@ -1,3 +1,5 @@
+using System.Security.Cryptography;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,7 +16,7 @@ public class SpecialLetter : MonoBehaviour
 
     //animation control using animation curve
     private float animationSpeed = 3f;
-    public AnimationCurve animationCurve;
+    public AnimationCurve curve;
 
     //time
     public float t = 0;
@@ -22,6 +24,7 @@ public class SpecialLetter : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        Pickrandomcolor();
     }
 
     // Update is called once per frame
@@ -29,6 +32,8 @@ public class SpecialLetter : MonoBehaviour
     {
         Detection();
 
+        //change color
+        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
         if (spriteRenderer.bounds.Contains(mousePos) == true)
         {
             //use the color variable
@@ -65,5 +70,25 @@ public class SpecialLetter : MonoBehaviour
             mouseIsOverMe = false;
 
         }
+    }
+
+    //animation curve for size
+    void Animating() //https://zh.esotericsoftware.com/forum/d/3825-unity-random-bone-explosion/2
+    {
+        //if mouse is over than the animation happens
+        if (mouseIsOverMe)
+        {
+            t += Time.deltaTime;
+        }
+        else
+        {
+            t -= Time.deltaTime;
+
+        }
+        if (t > 1)
+        {
+            t = 0;
+        }
+        transform.localScale = Vector2.Lerp(originalScale, IsExpanding, curve.Evaluate(t));
     }
 }
