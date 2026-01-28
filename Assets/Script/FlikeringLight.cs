@@ -8,8 +8,8 @@ public class FlikeringLight : MonoBehaviour
     private SpriteRenderer SpriteRenderer;
 
     //range for min and max for Alpha
-    public float minAlpha = 0.6f;
-    public float maxAlpha = 1f;
+    public float minAlpha = 0.2f;
+    public float maxAlpha = 0.7f;
 
     //animationCurve ofcours
     private float speed = 2f;
@@ -31,7 +31,7 @@ public class FlikeringLight : MonoBehaviour
     {
         //t is just a loop phase to go back and forth
         //flickertime is the real goat, real clock
-        float t = flickerTime * 1f;
+        float t = flickerTime % 1f;
         flickerTime += Time.deltaTime * speed;
 
 
