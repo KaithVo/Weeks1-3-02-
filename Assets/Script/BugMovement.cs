@@ -36,14 +36,14 @@ public class BugMovement : MonoBehaviour
     }
 
     void ResetPath()
-
-        
     {
-      
-
+        //calling off screen start and end position
+        float y = Random.Range(-3f, 3f);
+       
         // start at random range and end at random range
-        startPos = new Vector3(-10f, Random.Range(-3f, 3f), 0f);
-        endPos = new Vector3(10f, 10 + Random.Range(-3f, 3f), 0f);
+        startPos = new Vector3(-10f, y, 0f);
+        // vertical variation from the start 
+        endPos = new Vector3(10f, y + Random.Range(-3f, 3f), 0f);
 
         //start at the start position
         transform.position = startPos;
