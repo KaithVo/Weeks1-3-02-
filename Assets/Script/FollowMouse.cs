@@ -16,4 +16,5 @@ public class FollowMouse : MonoBehaviour
         mousePos.z = 0;
         transform.position = mousePos;
     }
+
 }
