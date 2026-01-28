@@ -14,6 +14,8 @@ public class BugMovement : MonoBehaviour
 
     void Start()
     {
+        //reset time
+        t = 0f;
         ResetPath();
     }
 
@@ -25,12 +27,20 @@ public class BugMovement : MonoBehaviour
         // move bug from start to end
         transform.position = Vector3.Lerp(startPos, endPos, t);
 
+        //if bug reach end, it restarts
+        if (t >= 1f)
+        {
+            Start();
+        }
+
     }
 
     void ResetPath()
 
         
     {
+      
+
         // start at random range and end at random range
         startPos = new Vector3(-10f, Random.Range(-3f, 3f), 0f);
         endPos = new Vector3(10f, 10 + Random.Range(-3f, 3f), 0f);
