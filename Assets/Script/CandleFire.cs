@@ -23,14 +23,20 @@ public class CandleFire : MonoBehaviour
     {
         t += Time.deltaTime;
 
-        //if over 0.5f, change sprite1 to sprite 2 back and forth
-        if (t >= 0.5f )
+        //if over 0.5f in sprite 1, change sprite1 to sprite 2 back and forth
+        if (t >= 0.5f)
         {
-            spriteRenderer.sprite = light1;
-        }
-        else
-        {
-            spriteRenderer.sprite = light2;
+            //reset timer
+            t = 0f;
+            //check if current light is light 1
+            if (spriteRenderer.sprite == light1)
+            {
+                spriteRenderer.sprite = light2;
+            }
+            else
+            {
+                spriteRenderer.sprite = light1;
+            }
         }
     }
 }

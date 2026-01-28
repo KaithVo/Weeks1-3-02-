@@ -763,7 +763,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light1: {fileID: 3356837773014537050, guid: 233b5fba45f3a4e3db2f0e8a561f1eec, type: 3}
   light2: {fileID: 1302723820812287101, guid: 7600213065ffb4dfb838818c5d21a084, type: 3}
-  spriteRenderer: {fileID: 0}
+  spriteRenderer: {fileID: 1097136308}
   t: 0
 --- !u!212 &1097136308
 SpriteRenderer:
@@ -829,7 +829,7 @@ Transform:
   m_GameObject: {fileID: 1097136306}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.3297131, y: 2.5019395, z: -0.019394878}
+  m_LocalPosition: {x: 0.3297131, y: 2.98, z: -0.019394878}
   m_LocalScale: {x: 1.9394879, y: 1.9394879, z: 1.9394879}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1459,7 +1459,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: 54bffc35661644c59bfe3d4c97f40ff5, type: 3}
-  m_Color: {r: 0.8301887, g: 0.7219038, b: 0.48949805, a: 1}
+  m_Color: {r: 1, g: 0.8687909, b: 0.5896226, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

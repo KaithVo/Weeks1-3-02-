@@ -12,7 +12,7 @@ public class FlikeringLight : MonoBehaviour
     public float maxAlpha = 0.7f;
 
     //animationCurve ofcours
-    private float speed = 2f;
+    private float speed = 0.5f;
     public AnimationCurve flickeringCurve;
     private float flickerTime; 
 
