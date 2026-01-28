@@ -94,6 +94,10 @@ public class SpecialLetter : MonoBehaviour
             t -= Time.deltaTime * speed;
 
         }
+
+        //clamp instead of resetting 
+        t = Mathf.Clamp01(t);
+
         transform.localScale = Vector3.Lerp(originalScale, IsExpanding, curve.Evaluate(t));
     }
 }
