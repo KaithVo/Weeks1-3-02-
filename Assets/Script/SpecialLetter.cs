@@ -13,10 +13,6 @@ public class SpecialLetter : MonoBehaviour
     //scales value
     public Vector3 originalScale;
     public Vector3 IsExpanding = new Vector3(1.5f, 1.5f,1.5f);
-
-    //animation control using animation curve
-    private float animationSpeed = 3f;
-
   
 
     void Start()
