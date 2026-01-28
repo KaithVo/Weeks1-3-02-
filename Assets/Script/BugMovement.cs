@@ -27,5 +27,13 @@ public class BugMovement : MonoBehaviour
 
     }
 
+    void ResetPath()
+    {
+        // start at random range and end at random range
+        startPos = new Vector3(-10f, Random.Range(-1f, 1f), 0f);
+        endPos = new Vector3(10f, Random.Range(-1f, 1f), 0f);
 
+        //start at the start position
+        transform.position = startPos;
+    }
 }
